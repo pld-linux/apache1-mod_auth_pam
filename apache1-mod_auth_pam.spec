@@ -1,10 +1,10 @@
 %define		mod_name	auth_pam
-%define 	apxs		/usr/sbin/apxs
+%define 	apxs		/usr/sbin/apxs1
 Summary:	This is the PAM authentication module for Apache
 Summary(es):	Este módulo proporciona autenticación PAM para Apache
 Summary(pl):	Modu³ uwierzytelnienia PAM dla Apache
 Summary(pt_BR):	Este módulo provê autenticação PAM para o Apache
-Name:		apache-mod_%{mod_name}
+Name:		apache1-mod_%{mod_name}
 Version:	1.1.1
 Release:	1
 License:	GPL
@@ -12,11 +12,14 @@ Group:		Networking/Daemons
 Source0:	http://pam.sourceforge.net/mod_auth_pam/dist/mod_%{mod_name}-%{version}.tar.gz
 # Source0-md5:	b1e36b5df18a177e671785f7f4c8001c
 Patch0:		%{name}-symbol_fix.patch
+Patch1:		%{name}-broken_lines.patch
 URL:		http://pam.sourceforge.net/mod_auth_pam/
 BuildRequires:	%{apxs}
 BuildRequires:	apache(EAPI)-devel
+BuildRequires:	apache1-devel
 Requires(post,preun):	%{apxs}
 Requires:	apache(EAPI)
+Obsoletes:	apache-mod_%{mod_name} < %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_pkglibdir	%(%{apxs} -q LIBEXECDIR)
@@ -38,7 +41,8 @@ diretório PAM.
 
 %prep
 %setup -q -n mod_%{mod_name}-%{version}
-%patch -p1
+%patch0 -p1
+%patch1 -p0
 
 %build
 %{apxs} -c mod_%{mod_name}.c -o mod_%{mod_name}.so -lpam -ldl
