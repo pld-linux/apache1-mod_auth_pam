@@ -6,7 +6,7 @@ Summary(pl):	Modu³ uwierzytelnienia PAM dla Apache
 Summary(pt_BR):	Este módulo provê autenticação PAM para o Apache
 Name:		apache1-mod_%{mod_name}
 Version:	1.1.1
-Release:	2
+Release:	3
 License:	GPL
 Group:		Networking/Daemons
 Source0:	http://pam.sourceforge.net/mod_auth_pam/dist/mod_%{mod_name}-%{version}.tar.gz
@@ -15,10 +15,9 @@ Patch0:		%{name}-symbol_fix.patch
 Patch1:		%{name}-broken_lines.patch
 URL:		http://pam.sourceforge.net/mod_auth_pam/
 BuildRequires:	%{apxs}
-BuildRequires:	apache(EAPI)-devel
 BuildRequires:	apache1-devel
 Requires(post,preun):	%{apxs}
-Requires:	apache(EAPI)
+Requires:	apache1
 Obsoletes:	apache-mod_%{mod_name} <= %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
