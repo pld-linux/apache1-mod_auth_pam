@@ -19,7 +19,7 @@ BuildRequires:	apache(EAPI)-devel
 BuildRequires:	apache1-devel
 Requires(post,preun):	%{apxs}
 Requires:	apache(EAPI)
-Obsoletes:	apache-mod_%{mod_name} < %{version}-%{release}
+Obsoletes:	apache-mod_%{mod_name} <= %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_pkglibdir	%(%{apxs} -q LIBEXECDIR)
