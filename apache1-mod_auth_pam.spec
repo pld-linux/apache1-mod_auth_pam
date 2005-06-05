@@ -16,6 +16,7 @@ Patch1:		%{name}-broken_lines.patch
 URL:		http://pam.sourceforge.net/mod_auth_pam/
 BuildRequires:	%{apxs}
 BuildRequires:	apache1-devel >= 1.3.33-2
+BuildRequires:	pam-devel
 Requires(triggerpostun):	%{apxs}
 Requires:	apache1 >= 1.3.33-2
 Obsoletes:	apache-mod_%{mod_name} <= %{version}-%{release}
