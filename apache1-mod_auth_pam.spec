@@ -14,8 +14,7 @@ Source0:	http://pam.sourceforge.net/mod_auth_pam/dist/mod_%{mod_name}-%{version}
 Patch0:		%{name}-symbol_fix.patch
 Patch1:		%{name}-broken_lines.patch
 URL:		http://pam.sourceforge.net/mod_auth_pam/
-BuildRequires:	apache1-apxs
-BuildRequires:	apache1-devel >= 1.3.33-2
+BuildRequires:	apache1-devel >= 1.3.39
 BuildRequires:	pam-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(triggerpostun):	%{apxs}
